@@ -7,7 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
   :root{
-    --bg:#000000; --fg:#f0f2f4; --muted:#8a9095; --accent:#9ed8f2; --line:#191919;
+    --bg:#f4f2ea; --fg:#172220; --muted:#5f7d80; --accent:#4f7682; --line:#e2ddd2;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -25,22 +25,23 @@
   .topnav a{opacity:.8}.topnav a:hover{opacity:1}
 
   /* ---------- STAGE: hover reveals full-screen video ---------- */
-  .stage{position:relative;height:100vh;width:100%;overflow:hidden;background:#000000}
+  .stage{position:relative;height:100vh;width:100%;overflow:hidden;background:#f4f2ea}
   .layers{position:absolute;inset:0;z-index:1}
   .layer{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;will-change:opacity}
   .layer.active{opacity:1}
   .layer video,.layer img{width:100%;height:100%;object-fit:cover;display:block}
-  .layer .ph{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#1c1c1c,#000000 75%)}
+  .layer .ph{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#e3ebe6,#f4f2ea 75%)}
   .layer .ph .dots{position:absolute;inset:0;opacity:.32;
-    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1.4px);
-    background-size:16px 16px;mix-blend-mode:screen}
+    background-image:radial-gradient(rgba(30,55,55,.18) 1px,transparent 1.4px);
+    background-size:16px 16px;mix-blend-mode:multiply}
 
-  .scrim{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.42);transition:background .6s}
+  .scrim{position:absolute;inset:0;z-index:2;background:rgba(244,242,234,.4);transition:background .6s}
 
   /* centered vertical list of work names */
   .menu{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;
     justify-content:center;align-items:center;text-align:center;gap:.2rem;padding:0 5vw}
-  .menu .item{display:block;padding:.5rem 0;transition:opacity .35s ease, letter-spacing .5s ease}
+  .menu .item{display:block;padding:.5rem 0;color:#ffffff;text-shadow:0 1px 16px rgba(0,0,0,.5);
+    transition:opacity .35s ease, letter-spacing .5s ease}
   .menu .name{font-size:clamp(1.6rem,3.4vw,2.8rem);font-weight:300;letter-spacing:.06em;line-height:1.15}
   .menu .en{display:block;margin-top:.35rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
     color:var(--muted);opacity:0;transition:opacity .4s}
@@ -64,7 +65,7 @@
   .about{max-width:760px}
   .about .big{font-size:clamp(1.2rem,2.4vw,1.7rem);font-weight:300;line-height:1.55;letter-spacing:.01em}
   .about .big em{color:var(--accent);font-style:normal}
-  .about .body{margin-top:2.5rem;color:#b8bdc1;font-size:1.02rem;line-height:1.85;max-width:60ch;font-weight:300}
+  .about .body{margin-top:2.5rem;color:#54635f;font-size:1.02rem;line-height:1.85;max-width:60ch;font-weight:300}
   .contact{border-top:1px solid var(--line)}
   .contact h2{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:300;letter-spacing:.02em}
   .contact a.mail{display:inline-block;margin-top:1.5rem;font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:300;
@@ -134,7 +135,7 @@ function activate(key){
     current=key;
   }
   // 悬停时背景更暗一点突出影像
-  scrim.style.background="rgba(0,0,0,.3)";
+  scrim.style.background="rgba(244,242,234,.28)";
 }
 document.querySelectorAll('#menu .item').forEach(it=>{
   it.addEventListener('mouseenter',()=>activate(it.dataset.key));
