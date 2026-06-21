@@ -3,82 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sibo Lee — 艺术家 / 研究者</title>
+<title>Sibo Lee — Studio</title>
 <style>
   :root{
-    --bg:#0e0e10; --fg:#ece8e1; --muted:#8a8780; --accent:#c9a96a; --line:#26252a;
+    --bg:#080809; --fg:#f4f2ee; --muted:#7d7a73; --accent:#d8c8a0; --line:#1c1c20;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
     background:var(--bg);color:var(--fg);
-    font-family:-apple-system,"PingFang SC","Helvetica Neue",sans-serif;
-    line-height:1.75;-webkit-font-smoothing:antialiased;
+    font-family:-apple-system,"Helvetica Neue","PingFang SC",sans-serif;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
-  .wrap{max-width:720px;margin:0 auto;padding:14vh 28px 18vh}
-  .eyebrow{color:var(--accent);letter-spacing:.22em;font-size:.72rem;text-transform:uppercase;margin-bottom:1.4rem}
-  h1{font-size:clamp(2.4rem,7vw,3.6rem);font-weight:600;letter-spacing:-.01em;line-height:1.1}
-  h1 .en{display:block;color:var(--muted);font-size:.42em;font-weight:400;letter-spacing:.04em;margin-top:.8rem}
-  .lede{margin-top:2rem;font-size:1.15rem;color:#d8d4cc}
-  .quote{
-    margin:3.2rem 0;padding:1.4rem 1.6rem;border-left:2px solid var(--accent);
-    font-size:1.2rem;color:#f2eee6;font-style:italic;background:#161519;border-radius:0 6px 6px 0;
+  a{color:inherit;text-decoration:none}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 5vw;mix-blend-mode:difference;
   }
-  section{margin-top:4.5rem}
-  h2{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.4rem;font-weight:600}
-  .grid{display:grid;gap:1.1rem}
-  .card{padding:1.3rem 1.5rem;border:1px solid var(--line);border-radius:10px;transition:.25s}
-  .card:hover{border-color:var(--accent);transform:translateY(-2px)}
-  .card h3{font-size:1.05rem;font-weight:600;margin-bottom:.35rem}
-  .card p{color:var(--muted);font-size:.95rem}
-  .tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.6rem}
-  .tag{font-size:.8rem;color:var(--accent);border:1px solid var(--line);border-radius:20px;padding:.25rem .85rem}
-  footer{margin-top:6rem;padding-top:2rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
-  footer a{color:var(--fg);text-decoration:none;border-bottom:1px solid var(--accent)}
-  footer a:hover{color:var(--accent)}
+  nav .brand{font-weight:700;letter-spacing:.02em;font-size:1.05rem}
+  nav .links{display:flex;gap:2.2rem;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
+  nav .links a{opacity:.85;transition:opacity .2s}
+  nav .links a:hover{opacity:1}
+  @media(max-width:600px){nav .links{gap:1.2rem;font-size:.72rem}}
+
+  /* HERO */
+  .hero{position:relative;height:100vh;width:100%;overflow:hidden}
+  #cloud{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .hero-text{
+    position:absolute;left:5vw;bottom:9vh;z-index:10;max-width:90vw;pointer-events:none;
+  }
+  .hero-text .sub{color:var(--accent);letter-spacing:.25em;text-transform:uppercase;font-size:.78rem;margin-bottom:1.3rem}
+  .hero-text h1{
+    font-size:clamp(3rem,11vw,8.5rem);font-weight:700;line-height:.92;letter-spacing:-.02em;
+  }
+  .hero-text .tag{margin-top:1.6rem;font-size:clamp(1rem,2.2vw,1.4rem);color:#cfcbc2;max-width:32ch;line-height:1.5}
+
+  /* SECTIONS */
+  section{padding:14vh 5vw}
+  .label{color:var(--muted);letter-spacing:.22em;text-transform:uppercase;font-size:.74rem;margin-bottom:3.5rem}
+
+  /* PROJECTS */
+  .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line)}
+  @media(max-width:760px){.projects{grid-template-columns:1fr}}
+  .proj{
+    position:relative;aspect-ratio:4/3;overflow:hidden;background:#101013;cursor:pointer;
+  }
+  .proj .visual{position:absolute;inset:0;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .proj:hover .visual{transform:scale(1.06)}
+  .proj .overlay{
+    position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;
+    padding:2.2rem;background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,.05) 55%,transparent);
+  }
+  .proj .num{color:var(--accent);font-size:.78rem;letter-spacing:.15em;margin-bottom:.6rem}
+  .proj h3{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:600;line-height:1.05}
+  .proj p{color:#c5c1b8;font-size:.95rem;margin-top:.5rem;max-width:34ch;
+    opacity:0;transform:translateY(8px);transition:.4s}
+  .proj:hover p{opacity:1;transform:none}
+
+  .v1{background:radial-gradient(circle at 30% 40%,#3a4d6b,#0b1018 70%)}
+  .v2{background:radial-gradient(circle at 70% 60%,#6b5a3a,#120f08 70%)}
+  .v3{background:radial-gradient(ellipse at 50% 30%,#4a3a5e,#0d0a12 70%)}
+  .v4{background:radial-gradient(circle at 40% 70%,#2f5e52,#08110e 70%)}
+  .dots{position:absolute;inset:0;opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1.4px);
+    background-size:14px 14px;mix-blend-mode:screen}
+
+  /* ABOUT */
+  .about{max-width:760px}
+  .about .big{font-size:clamp(1.5rem,3.4vw,2.4rem);font-weight:500;line-height:1.4;letter-spacing:-.01em}
+  .about .big em{color:var(--accent);font-style:normal}
+  .about .body{margin-top:2.5rem;color:#bcb8b0;font-size:1.05rem;line-height:1.8;max-width:60ch}
+
+  /* CONTACT */
+  .contact{border-top:1px solid var(--line)}
+  .contact h2{font-size:clamp(2rem,6vw,4rem);font-weight:700;letter-spacing:-.02em}
+  .contact a.mail{display:inline-block;margin-top:1.5rem;font-size:clamp(1.1rem,2.5vw,1.6rem);
+    color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:.2rem}
+  .contact .meta{margin-top:4rem;color:var(--muted);font-size:.85rem;line-height:1.9}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="eyebrow">Artist · Researcher</div>
-  <h1>李思博 Sibo Lee<span class="en">Embodied Knowledge × Volumetric Video × Intangible Heritage</span></h1>
 
-  <p class="lede">艺术家、硕士研究生（天津美术学院），实践跨越绘画、社会艺术与前沿科技艺术。研究方向为社会美育与创造力开发。</p>
+<nav>
+  <a class="brand" href="#top">SIBO LEE</a>
+  <div class="links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-  <div class="quote">如何保存那些正在消失的、无法被文字完整记录的经验？</div>
-  <p style="color:var(--muted)">——匠人的手感、工艺中的身体记忆、表演中的动作逻辑、师徒传承里的默会知识。</p>
+<header class="hero" id="top">
+  <canvas id="cloud"></canvas>
+  <div class="hero-text">
+    <div class="sub">Artist · Researcher</div>
+    <h1>SIBO LEE</h1>
+    <p class="tag">用体积视频与人工智能，保存那些正在消失、无法被文字记录的身体经验。</p>
+  </div>
+</header>
 
-  <section>
-    <h2>研究方向 / Research</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>基于 AI 的体积视频系统</h3>
-        <p>以点云与高斯喷溅技术，将小规模非物质文化遗产与表演实践记录为动态的行为数据集，而非静态模型。</p>
+<section id="work">
+  <div class="label">Selected Work</div>
+  <div class="projects">
+    <article class="proj">
+      <div class="visual v1"><div class="dots"></div></div>
+      <div class="overlay">
+        <div class="num">01</div>
+        <h3>AI 体积视频系统</h3>
+        <p>以点云与高斯喷溅，将非遗与表演记录为动态行为数据集，而非静态模型。</p>
       </div>
-      <div class="card">
-        <h3>社会美育与创造力开发</h3>
-        <p>关注感知、主观性与社会美学结构，探索美育作为方法论介入日常经验的可能。</p>
+    </article>
+    <article class="proj">
+      <div class="visual v2"><div class="dots"></div></div>
+      <div class="overlay">
+        <div class="num">02</div>
+        <h3>体现性记忆的容器</h3>
+        <p>追问匠人手感与默会知识如何被保存——保存经验，而非作品。</p>
       </div>
-    </div>
-  </section>
+    </article>
+    <article class="proj">
+      <div class="visual v3"><div class="dots"></div></div>
+      <div class="overlay">
+        <div class="num">03</div>
+        <h3>社会美育实践</h3>
+        <p>感知、主观性与社会美学结构：美育作为介入日常经验的方法论。</p>
+      </div>
+    </article>
+    <article class="proj">
+      <div class="visual v4"><div class="dots"></div></div>
+      <div class="overlay">
+        <div class="num">04</div>
+        <h3>错视与创造性的看</h3>
+        <p>在感知的缝隙处，探索观看如何成为一种创造行为。</p>
+      </div>
+    </article>
+  </div>
+</section>
 
-  <section>
-    <h2>关键词 / Themes</h2>
-    <div class="tags">
-      <span class="tag">体现性知识</span>
-      <span class="tag">非物质文化遗产</span>
-      <span class="tag">高斯喷溅</span>
-      <span class="tag">4D 点云</span>
-      <span class="tag">默会知识</span>
-      <span class="tag">社会美育</span>
-      <span class="tag">感知与主观性</span>
-    </div>
-  </section>
+<section id="about" class="about">
+  <div class="label">About</div>
+  <p class="big">如何保存那些正在消失的、<em>无法被文字完整记录</em>的经验？匠人的手感、工艺中的身体记忆、表演的动作逻辑、师徒之间的默会知识。</p>
+  <p class="body">Sibo Lee 是一位艺术家与硕士研究生（天津美术学院），实践跨越绘画、社会艺术与前沿科技艺术，研究方向为社会美育与创造力开发。其核心工作以点云与高斯喷溅技术为媒介，将小规模非物质文化遗产与表演实践记录为动态的行为数据集，在感知、主观性与社会美学结构的交叉处展开。</p>
+</section>
 
-  <footer>
-    Sibo Lee · 天津美术学院 · 2026<br>
-    <span style="font-size:.82rem">This page is published with GitHub Pages.</span>
-  </footer>
-</div>
+<section id="contact" class="contact">
+  <h2>Let's talk.</h2>
+  <a class="mail" href="mailto:sibo.lees@gmail.com">sibo.lees@gmail.com</a>
+  <div class="meta">
+    天津美术学院 · 社会美育与创造力开发<br>
+    © 2026 Sibo Lee — Published with GitHub Pages
+  </div>
+</section>
+
+<script>
+// 点云粒子 hero —— 呼应体积视频 / 高斯喷溅的媒介
+const c = document.getElementById('cloud');
+const x = c.getContext('2d');
+let W,H,pts=[];
+function size(){W=c.width=innerWidth*devicePixelRatio;H=c.height=innerHeight*devicePixelRatio;}
+size();addEventListener('resize',size);
+const N = Math.min(900, Math.floor(innerWidth*0.6));
+for(let i=0;i<N;i++){
+  pts.push({
+    a:Math.random()*Math.PI*2,         // 经度
+    b:Math.acos(2*Math.random()-1),    // 纬度
+    r:0.55+Math.random()*0.45,
+    s:0.6+Math.random()*0.8
+  });
+}
+let t=0, mx=0, my=0;
+addEventListener('mousemove',e=>{mx=(e.clientX/innerWidth-0.5);my=(e.clientY/innerHeight-0.5);});
+function loop(){
+  t+=0.0016;
+  x.clearRect(0,0,W,H);
+  const cx=W*0.5, cy=H*0.5, R=Math.min(W,H)*0.42;
+  const ry=t+mx*0.6, rx=my*0.5;
+  for(const p of pts){
+    // 球面坐标
+    let px=Math.sin(p.b)*Math.cos(p.a)*p.r;
+    let py=Math.cos(p.b)*p.r;
+    let pz=Math.sin(p.b)*Math.sin(p.a)*p.r;
+    // 绕 Y 轴旋转
+    let dx=px*Math.cos(ry)-pz*Math.sin(ry);
+    let dz=px*Math.sin(ry)+pz*Math.cos(ry);
+    // 绕 X 轴
+    let dy=py*Math.cos(rx)-dz*Math.sin(rx);
+    let fz=py*Math.sin(rx)+dz*Math.cos(rx);
+    const depth=(fz+1.4)/2.4;
+    const sx=cx+dx*R, sy=cy+dy*R;
+    const sz=Math.max(0.2,depth);
+    x.beginPath();
+    x.arc(sx,sy,p.s*sz*devicePixelRatio,0,Math.PI*2);
+    x.fillStyle='rgba('+(216)+','+(200)+','+(160)+','+(0.15+depth*0.7)+')';
+    x.fill();
+  }
+  requestAnimationFrame(loop);
+}
+loop();
+</script>
 </body>
 </html>
