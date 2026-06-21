@@ -35,7 +35,7 @@
     background-image:radial-gradient(rgba(30,55,55,.18) 1px,transparent 1.4px);
     background-size:16px 16px;mix-blend-mode:multiply}
 
-  .scrim{position:absolute;inset:0;z-index:2;background:rgba(244,242,234,.4);transition:background .6s}
+  .scrim{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.12);transition:background .6s}
 
   /* centered vertical list of work names */
   .menu{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;
@@ -135,7 +135,7 @@ function activate(key){
     current=key;
   }
   // 悬停时背景更暗一点突出影像
-  scrim.style.background="rgba(244,242,234,.28)";
+  scrim.style.background="rgba(0,0,0,.08)";
 }
 document.querySelectorAll('#menu .item').forEach(it=>{
   it.addEventListener('mouseenter',()=>activate(it.dataset.key));
