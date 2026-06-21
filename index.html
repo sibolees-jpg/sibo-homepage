@@ -6,7 +6,7 @@
 <title>Sibo Lee — Studio</title>
 <style>
   :root{
-    --bg:#080809; --fg:#f4f2ee; --muted:#7d7a73; --accent:#d8c8a0; --line:#1c1c20;
+    --bg:#070708; --fg:#f4f2ee; --muted:#8a877f; --accent:#d8c8a0; --line:#1c1c20;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -17,69 +17,70 @@
   }
   a{color:inherit;text-decoration:none}
 
-  /* NAV */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:22px 5vw;mix-blend-mode:difference;
+  /* ---------- TOP MARK ---------- */
+  .mark{position:fixed;top:24px;left:5vw;z-index:60;font-size:.82rem;letter-spacing:.18em;
+    text-transform:uppercase;mix-blend-mode:difference;font-weight:600}
+  .topnav{position:fixed;top:24px;right:5vw;z-index:60;display:flex;gap:1.8rem;
+    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;mix-blend-mode:difference}
+  .topnav a{opacity:.8}.topnav a:hover{opacity:1}
+
+  /* ---------- STAGE (hover-reveal menu) ---------- */
+  .stage{position:relative;height:100vh;width:100%;overflow:hidden;background:#0a0b0e}
+  .layers{position:absolute;inset:0;z-index:1}
+  .layer{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;will-change:opacity}
+  .layer.active{opacity:1}
+  .layer video,.layer img{width:100%;height:100%;object-fit:cover;display:block}
+  .layer .ph{position:absolute;inset:0}
+  .layer .dots{position:absolute;inset:0;opacity:.4;
+    background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.4px);
+    background-size:15px 15px;mix-blend-mode:screen}
+  .g-paint{background:radial-gradient(circle at 35% 40%,#7a5a4a,#140d0a 72%)}
+  .g-ai{background:radial-gradient(circle at 65% 55%,#3a4d6b,#0a0e16 72%)}
+  .g-edu{background:radial-gradient(circle at 50% 65%,#3a5e52,#08110e 72%)}
+  .g-cloud{background:radial-gradient(ellipse at 55% 35%,#4a3a5e,#0c0a12 72%)}
+  .g-other{background:radial-gradient(circle at 45% 50%,#5a5648,#100f0b 72%)}
+
+  .scrim{position:absolute;inset:0;z-index:2;
+    background:linear-gradient(to right,rgba(7,7,8,.82),rgba(7,7,8,.25) 60%,rgba(7,7,8,.5))}
+
+  /* menu list */
+  .menu{position:absolute;z-index:3;left:5vw;top:50%;transform:translateY(-50%);max-width:90vw}
+  .menu .kicker{color:var(--accent);letter-spacing:.25em;text-transform:uppercase;
+    font-size:.74rem;margin-bottom:1.8rem;opacity:.9}
+  .menu ul{list-style:none}
+  .menu li{margin:.1rem 0}
+  .menu .item{display:flex;align-items:baseline;gap:1rem;padding:.35rem 0;
+    transition:opacity .35s ease, transform .45s cubic-bezier(.2,.7,.2,1)}
+  .menu .name{font-size:clamp(2.1rem,6.5vw,5rem);font-weight:700;letter-spacing:-.02em;line-height:1}
+  .menu .en{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    opacity:0;transform:translateX(-6px);transition:.4s}
+  .menu .tagline{margin-top:1.6rem;font-size:clamp(1rem,2vw,1.25rem);color:#e6e2d9;
+    max-width:36ch;min-height:1.6em;opacity:.0;transition:opacity .4s;
+    text-shadow:0 1px 18px rgba(0,0,0,.6)}
+  .menu .tagline.show{opacity:1}
+  /* hover dimming */
+  .menu ul:hover .item{opacity:.32}
+  .menu ul .item:hover{opacity:1;transform:translateX(14px)}
+  .menu .item:hover .en{opacity:1;transform:none}
+
+  .hint{position:absolute;z-index:3;bottom:6vh;left:5vw;color:var(--muted);
+    font-size:.78rem;letter-spacing:.1em}
+
+  @media(max-width:760px){
+    .scrim{background:linear-gradient(to top,rgba(7,7,8,.9),rgba(7,7,8,.4))}
+    .menu{top:auto;bottom:12vh;transform:none}
+    .menu ul:hover .item{opacity:1}
+    .menu .en{opacity:1;transform:none}
+    .hint{display:none}
   }
-  nav .brand{font-weight:700;letter-spacing:.02em;font-size:1.05rem}
-  nav .links{display:flex;gap:2.2rem;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
-  nav .links a{opacity:.85;transition:opacity .2s}
-  nav .links a:hover{opacity:1}
-  @media(max-width:600px){nav .links{gap:1.2rem;font-size:.72rem}}
 
-  /* HERO */
-  .hero{position:relative;height:100vh;width:100%;overflow:hidden;background:#0b0d12}
-  .hero video,.hero .poster{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  }
-  .hero .scrim{position:absolute;inset:0;z-index:2;
-    background:linear-gradient(to top,rgba(8,8,9,.92),rgba(8,8,9,.15) 45%,rgba(8,8,9,.4))}
-  .hero-text{position:absolute;left:5vw;bottom:9vh;z-index:3;max-width:90vw;pointer-events:none}
-  .hero-text .sub{color:var(--accent);letter-spacing:.25em;text-transform:uppercase;font-size:.78rem;margin-bottom:1.3rem}
-  .hero-text h1{font-size:clamp(3rem,11vw,8.5rem);font-weight:700;line-height:.92;letter-spacing:-.02em}
-  .hero-text .tag{margin-top:1.6rem;font-size:clamp(1rem,2.2vw,1.4rem);color:#e6e2d9;max-width:34ch;line-height:1.5;
-    text-shadow:0 1px 20px rgba(0,0,0,.6)}
-
-  /* SECTIONS */
-  section{padding:14vh 5vw}
-  .label{color:var(--muted);letter-spacing:.22em;text-transform:uppercase;font-size:.74rem;margin-bottom:3.5rem}
-
-  /* PROJECTS */
-  .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line)}
-  @media(max-width:760px){.projects{grid-template-columns:1fr}}
-  .proj{position:relative;aspect-ratio:16/10;overflow:hidden;background:#101013;cursor:pointer}
-  .proj .visual{position:absolute;inset:0;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-  .proj .visual img,.proj .visual video{width:100%;height:100%;object-fit:cover;display:block}
-  .proj:hover .visual{transform:scale(1.06)}
-  .proj .overlay{
-    position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;
-    padding:2.2rem;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.05) 60%,transparent)}
-  .proj .num{color:var(--accent);font-size:.78rem;letter-spacing:.15em;margin-bottom:.6rem}
-  .proj h3{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:600;line-height:1.05}
-  .proj p{color:#d3cfc6;font-size:.95rem;margin-top:.5rem;max-width:36ch;
-    opacity:0;transform:translateY(8px);transition:.4s;text-shadow:0 1px 12px rgba(0,0,0,.7)}
-  .proj:hover p{opacity:1;transform:none}
-  .proj.soon .overlay{background:rgba(16,16,19,.6)}
-  .proj.soon .badge{position:absolute;top:1.6rem;right:1.6rem;z-index:3;
-    font-size:.7rem;letter-spacing:.12em;color:var(--muted);border:1px solid var(--line);
-    border-radius:20px;padding:.3rem .8rem}
-
-  .v2{background:radial-gradient(circle at 70% 60%,#6b5a3a,#120f08 70%)}
-  .v3{background:radial-gradient(ellipse at 50% 30%,#4a3a5e,#0d0a12 70%)}
-  .v4{background:radial-gradient(circle at 40% 70%,#2f5e52,#08110e 70%)}
-  .dots{position:absolute;inset:0;opacity:.45;
-    background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1.4px);
-    background-size:14px 14px;mix-blend-mode:screen}
-
-  /* ABOUT */
+  /* ---------- SECTIONS ---------- */
+  section{padding:16vh 5vw}
+  .label{color:var(--muted);letter-spacing:.22em;text-transform:uppercase;font-size:.74rem;margin-bottom:3.2rem}
   .about{max-width:760px}
   .about .big{font-size:clamp(1.5rem,3.4vw,2.4rem);font-weight:500;line-height:1.4;letter-spacing:-.01em}
   .about .big em{color:var(--accent);font-style:normal}
   .about .body{margin-top:2.5rem;color:#bcb8b0;font-size:1.05rem;line-height:1.8;max-width:60ch}
-
-  /* CONTACT */
   .contact{border-top:1px solid var(--line)}
   .contact h2{font-size:clamp(2rem,6vw,4rem);font-weight:700;letter-spacing:-.02em}
   .contact a.mail{display:inline-block;margin-top:1.5rem;font-size:clamp(1.1rem,2.5vw,1.6rem);
@@ -89,75 +90,39 @@
 </head>
 <body>
 
-<nav>
-  <a class="brand" href="#top">SIBO LEE</a>
-  <div class="links">
-    <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
+<div class="mark"><a href="#top">SIBO LEE</a></div>
+<nav class="topnav">
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
 </nav>
 
-<header class="hero" id="top">
-  <video autoplay muted loop playsinline poster="media/aigc-poster.jpg">
-    <source src="media/aigc-1080.mp4" type="video/mp4">
-  </video>
+<header class="stage" id="top">
+  <div class="layers">
+    <div class="layer" data-cat="paint"><div class="ph g-paint"><div class="dots"></div></div></div>
+    <div class="layer" data-cat="ai">
+      <video muted loop playsinline poster="media/2036-poster.jpg" preload="auto">
+        <source src="media/2036.mp4" type="video/mp4"></video>
+    </div>
+    <div class="layer" data-cat="edu"><div class="ph g-edu"><div class="dots"></div></div></div>
+    <div class="layer" data-cat="cloud"><div class="ph g-cloud"><div class="dots"></div></div></div>
+    <div class="layer" data-cat="other"><div class="ph g-other"><div class="dots"></div></div></div>
+  </div>
   <div class="scrim"></div>
-  <div class="hero-text">
-    <div class="sub">Artist · Researcher</div>
-    <h1>SIBO LEE</h1>
-    <p class="tag">在艺术、人工智能与社会美育之间，保存正在消失的身体经验。</p>
+
+  <div class="menu">
+    <div class="kicker">Selected Works</div>
+    <ul id="menu">
+      <li><a class="item" data-cat="paint"  data-tag="布面与纸本的持续实践。"><span class="name">绘画</span><span class="en">Painting</span></a></li>
+      <li><a class="item" data-cat="ai"     data-tag="《2036》——以 AIGC 想象未来日常的动画作品。"><span class="name">AI 相关作品</span><span class="en">AI Works</span></a></li>
+      <li><a class="item" data-cat="edu"    data-tag="以美育介入社会现场的项目实践。"><span class="name">社会美育项目</span><span class="en">Social Aesthetic Education</span></a></li>
+      <li><a class="item" data-cat="cloud"  data-tag="将非遗与表演记录为动态行为数据集。"><span class="name">4D 点云与高斯</span><span class="en">4D Point Cloud &amp; Gaussian</span></a></li>
+      <li><a class="item" data-cat="other"  data-tag="跨媒介的其他实验与协作。"><span class="name">其他</span><span class="en">Other</span></a></li>
+    </ul>
+    <p class="tagline" id="tagline"></p>
   </div>
+
+  <div class="hint">悬停查看 · Hover to explore</div>
 </header>
-
-<section id="work">
-  <div class="label">Selected Work</div>
-  <div class="projects">
-
-    <article class="proj" id="p1">
-      <div class="visual">
-        <video muted loop playsinline poster="media/aigc-poster.jpg" preload="none"
-               data-src="media/aigc-1080.mp4"></video>
-      </div>
-      <div class="overlay">
-        <div class="num">01 — AIGC / 动画</div>
-        <h3>低空经济</h3>
-        <p>一支 AIGC 动画作品：以无人机配送的日常图景，想象低空经济介入生活的温度。（低空经济主题展览作品）</p>
-      </div>
-    </article>
-
-    <article class="proj soon">
-      <span class="badge">Coming soon</span>
-      <div class="visual v2"><div class="dots"></div></div>
-      <div class="overlay">
-        <div class="num">02 — 绘画</div>
-        <h3>绘画作品</h3>
-        <p>作品图整理中，即将更新。</p>
-      </div>
-    </article>
-
-    <article class="proj soon">
-      <span class="badge">研究中</span>
-      <div class="visual v3"><div class="dots"></div></div>
-      <div class="overlay">
-        <div class="num">03 — 研究</div>
-        <h3>AI 体积视频系统</h3>
-        <p>以点云与高斯喷溅，将非遗与表演记录为动态行为数据集，而非静态模型。</p>
-      </div>
-    </article>
-
-    <article class="proj soon">
-      <span class="badge">研究中</span>
-      <div class="visual v4"><div class="dots"></div></div>
-      <div class="overlay">
-        <div class="num">04 — 实践</div>
-        <h3>社会美育</h3>
-        <p>感知、主观性与社会美学结构：美育作为介入日常经验的方法论。</p>
-      </div>
-    </article>
-
-  </div>
-</section>
 
 <section id="about" class="about">
   <div class="label">About</div>
@@ -175,15 +140,33 @@
 </section>
 
 <script>
-// 项目卡片：鼠标悬停才加载并播放视频，省流量
-document.querySelectorAll('.proj video[data-src]').forEach(v=>{
-  const card=v.closest('.proj');
-  card.addEventListener('mouseenter',()=>{
-    if(!v.src){v.src=v.dataset.src;}
-    v.play().catch(()=>{});
-  });
-  card.addEventListener('mouseleave',()=>{v.pause();});
+const layers={};
+document.querySelectorAll('.layer').forEach(l=>layers[l.dataset.cat]=l);
+const items=document.querySelectorAll('#menu .item');
+const tagEl=document.getElementById('tagline');
+let current=null;
+
+function activate(cat,tag){
+  if(current && layers[current]) layers[current].classList.remove('active');
+  if(layers[cat]){
+    layers[cat].classList.add('active');
+    const v=layers[cat].querySelector('video');
+    if(v){v.play().catch(()=>{});}
+    current=cat;
+  }
+  tagEl.textContent=tag||'';
+  tagEl.classList.toggle('show',!!tag);
+}
+
+items.forEach(it=>{
+  it.addEventListener('mouseenter',()=>activate(it.dataset.cat,it.dataset.tag));
 });
+// 默认展示 AI / 2036
+const def=document.querySelector('#menu .item[data-cat="ai"]');
+window.addEventListener('load',()=>activate('ai',def.dataset.tag));
+
+// 移动端：直接显示视频背景
+if(matchMedia('(max-width:760px)').matches){activate('ai','');tagEl.classList.remove('show');}
 </script>
 </body>
 </html>
