@@ -6,7 +6,7 @@
 <title>Works — Sibo Lee</title>
 <style>
   :root{
-    --bg:#070708; --fg:#f4f2ee; --muted:#8a877f; --accent:#d8c8a0; --line:#1c1c20;
+    --bg:#070708; --fg:#f4f2ee; --muted:#8a877f; --accent:#d8c8a0; --line:#1c1c20; --card:#101013;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{
@@ -17,50 +17,33 @@
   a{color:inherit;text-decoration:none}
 
   .mark{position:fixed;top:24px;left:5vw;z-index:60;font-size:.8rem;letter-spacing:.2em;
-    text-transform:uppercase;mix-blend-mode:difference;font-weight:400}
+    text-transform:uppercase;font-weight:400}
   .topnav{position:fixed;top:24px;right:5vw;z-index:60;display:flex;gap:1.8rem;
-    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;mix-blend-mode:difference}
-  .topnav a{opacity:.8}.topnav a:hover{opacity:1}
+    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+  .topnav a{opacity:.75}.topnav a:hover{opacity:1}
 
-  .stage{position:relative;min-height:100vh;width:100%;overflow:hidden;background:#0a0b0e}
-  .layers{position:fixed;inset:0;z-index:1}
-  .layer{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;will-change:opacity}
-  .layer.active{opacity:1}
-  .layer video,.layer img{width:100%;height:100%;object-fit:cover;display:block}
-  .layer .ph{position:absolute;inset:0}
-  .layer .dots{position:absolute;inset:0;opacity:.4;
-    background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.4px);
-    background-size:15px 15px;mix-blend-mode:screen}
-  .g-paint{background:radial-gradient(circle at 35% 40%,#7a5a4a,#140d0a 72%)}
-  .g-edu{background:radial-gradient(circle at 50% 65%,#3a5e52,#08110e 72%)}
-  .g-curate{background:radial-gradient(circle at 60% 40%,#6b4a5e,#120a10 72%)}
-  .g-cloud{background:radial-gradient(ellipse at 55% 35%,#4a3a5e,#0c0a12 72%)}
-  .g-other{background:radial-gradient(circle at 45% 50%,#5a5648,#100f0b 72%)}
+  .head{padding:18vh 5vw 6vh}
+  .head .kicker{color:var(--accent);letter-spacing:.25em;text-transform:uppercase;font-size:.74rem;margin-bottom:1.4rem}
+  .head h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;letter-spacing:.04em}
 
-  .scrim{position:fixed;inset:0;z-index:2;
-    background:linear-gradient(to right,rgba(7,7,8,.84),rgba(7,7,8,.3) 60%,rgba(7,7,8,.55))}
+  .grid{padding:0 5vw 16vh;display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);
+    border-top:1px solid var(--line)}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr;padding-left:0;padding-right:0}}
 
-  .menu{position:relative;z-index:3;min-height:100vh;display:flex;flex-direction:column;
-    justify-content:center;padding:16vh 5vw 12vh;max-width:90vw}
-  .kicker{color:var(--accent);letter-spacing:.25em;text-transform:uppercase;font-size:.74rem;margin-bottom:2rem}
-  .menu ul{list-style:none}
-  .menu .item{display:flex;align-items:baseline;gap:1rem;padding:.45rem 0;
-    transition:opacity .35s ease, transform .45s cubic-bezier(.2,.7,.2,1)}
-  .menu .name{font-size:clamp(1.5rem,3.2vw,2.6rem);font-weight:300;letter-spacing:.02em;line-height:1.15}
-  .menu .en{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-    opacity:0;transform:translateX(-6px);transition:.4s}
-  .tagline{margin-top:1.8rem;font-size:clamp(.9rem,1.5vw,1.05rem);font-weight:300;color:#e6e2d9;
-    max-width:36ch;min-height:1.6em;opacity:0;transition:opacity .4s;text-shadow:0 1px 18px rgba(0,0,0,.6)}
-  .tagline.show{opacity:1}
-  .menu ul:hover .item{opacity:.32}
-  .menu ul .item:hover{opacity:1;transform:translateX(14px)}
-  .menu .item:hover .en{opacity:1;transform:none}
+  .block{position:relative;background:var(--card);padding:3rem 2.4rem;min-height:300px;
+    display:flex;flex-direction:column;justify-content:space-between;transition:background .35s, transform .45s cubic-bezier(.2,.7,.2,1)}
+  .block:hover{background:#16161b;transform:translateY(-3px)}
+  .block .num{color:var(--muted);font-size:.74rem;letter-spacing:.14em}
+  .block .body{margin-top:auto}
+  .block h2{font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:300;letter-spacing:.03em;line-height:1.2}
+  .block .en{display:block;margin-top:.5rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  .block p{margin-top:1.1rem;font-size:.92rem;color:#bcb8b0;line-height:1.7;font-weight:300}
+  .block .arrow{position:absolute;top:3rem;right:2.4rem;color:var(--muted);font-size:1.1rem;transition:.3s}
+  .block:hover .arrow{color:var(--accent);transform:translate(3px,-3px)}
 
-  @media(max-width:760px){
-    .scrim{background:linear-gradient(to top,rgba(7,7,8,.9),rgba(7,7,8,.4))}
-    .menu ul:hover .item{opacity:1}
-    .menu .en{opacity:1;transform:none}
-  }
+  footer{padding:8vh 5vw;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;line-height:1.9}
+  footer a{color:var(--fg);border-bottom:1px solid var(--accent)}
 </style>
 </head>
 <body>
@@ -72,54 +55,48 @@
   <a href="index.html#contact">Contact</a>
 </nav>
 
-<div class="layers">
-  <div class="layer" data-cat="paint"><div class="ph g-paint"><div class="dots"></div></div></div>
-  <div class="layer" data-cat="ai">
-    <video muted loop playsinline poster="media/2036-poster.jpg" preload="auto">
-      <source src="media/2036.mp4" type="video/mp4"></video>
-  </div>
-  <div class="layer" data-cat="edu"><div class="ph g-edu"><div class="dots"></div></div></div>
-  <div class="layer" data-cat="curate"><div class="ph g-curate"><div class="dots"></div></div></div>
-  <div class="layer" data-cat="cloud"><div class="ph g-cloud"><div class="dots"></div></div></div>
-  <div class="layer" data-cat="other"><div class="ph g-other"><div class="dots"></div></div></div>
-</div>
-<div class="scrim"></div>
+<header class="head">
+  <div class="kicker">完整作品目录 · All Works</div>
+  <h1>作品分类</h1>
+</header>
 
-<div class="stage">
-  <div class="menu">
-    <div class="kicker">完整作品目录 · All Works</div>
-    <ul id="menu">
-      <li><a class="item" data-cat="paint"  data-tag="布面与纸本的持续实践。"><span class="name">绘画</span><span class="en">Painting</span></a></li>
-      <li><a class="item" data-cat="ai"     data-tag="《2036》——以 AIGC 想象未来日常的动画作品。"><span class="name">AI 相关作品</span><span class="en">AI Works</span></a></li>
-      <li><a class="item" data-cat="edu"    data-tag="以美育介入社会现场的项目实践。"><span class="name">社会美育项目</span><span class="en">Social Aesthetic Education</span></a></li>
-      <li><a class="item" data-cat="curate" data-tag="作为策展人组织与构建的展览实践。"><span class="name">策展实践</span><span class="en">Curatorial Practice</span></a></li>
-      <li><a class="item" data-cat="cloud"  data-tag="将非遗与表演记录为动态行为数据集。"><span class="name">4D 点云与高斯</span><span class="en">4D Point Cloud &amp; Gaussian</span></a></li>
-      <li><a class="item" data-cat="other"  data-tag="跨媒介的其他实验与协作。"><span class="name">其他</span><span class="en">Other</span></a></li>
-    </ul>
-    <p class="tagline" id="tagline"></p>
-  </div>
-</div>
+<main class="grid">
+  <article class="block">
+    <span class="num">01</span><span class="arrow">↗</span>
+    <div class="body"><h2>绘画<span class="en">Painting</span></h2>
+      <p>布面与纸本的持续实践。</p></div>
+  </article>
+  <article class="block">
+    <span class="num">02</span><span class="arrow">↗</span>
+    <div class="body"><h2>AI 相关作品<span class="en">AI Works</span></h2>
+      <p>《2036》——以 AIGC 想象未来日常的动画作品。</p></div>
+  </article>
+  <article class="block">
+    <span class="num">03</span><span class="arrow">↗</span>
+    <div class="body"><h2>社会美育项目<span class="en">Social Aesthetic Education</span></h2>
+      <p>以美育介入社会现场的项目实践。</p></div>
+  </article>
+  <article class="block">
+    <span class="num">04</span><span class="arrow">↗</span>
+    <div class="body"><h2>策展实践<span class="en">Curatorial Practice</span></h2>
+      <p>作为策展人组织与构建的展览实践。</p></div>
+  </article>
+  <article class="block">
+    <span class="num">05</span><span class="arrow">↗</span>
+    <div class="body"><h2>4D 点云与高斯<span class="en">4D Point Cloud &amp; Gaussian</span></h2>
+      <p>将非遗与表演记录为动态行为数据集。</p></div>
+  </article>
+  <article class="block">
+    <span class="num">06</span><span class="arrow">↗</span>
+    <div class="body"><h2>其他<span class="en">Other</span></h2>
+      <p>跨媒介的其他实验与协作。</p></div>
+  </article>
+</main>
 
-<script>
-const layers={};
-document.querySelectorAll('.layer').forEach(l=>layers[l.dataset.cat]=l);
-const tagEl=document.getElementById('tagline');
-let current=null;
-function activate(cat,tag){
-  if(current && layers[current]) layers[current].classList.remove('active');
-  if(layers[cat]){
-    layers[cat].classList.add('active');
-    const v=layers[cat].querySelector('video'); if(v){v.play().catch(()=>{});}
-    current=cat;
-  }
-  tagEl.textContent=tag||''; tagEl.classList.toggle('show',!!tag);
-}
-document.querySelectorAll('#menu .item').forEach(it=>{
-  it.addEventListener('mouseenter',()=>activate(it.dataset.cat,it.dataset.tag));
-});
-const def=document.querySelector('#menu .item[data-cat="ai"]');
-window.addEventListener('load',()=>activate('ai',def.dataset.tag));
-if(matchMedia('(max-width:760px)').matches){activate('ai','');tagEl.classList.remove('show');}
-</script>
+<footer>
+  返回 <a href="index.html">代表作 →</a><br>
+  © 2026 Sibo Lee — 天津美术学院
+</footer>
+
 </body>
 </html>
