@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2036 — Sibo Lee</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+<style>
+  :root{
+    --bg:#f4f2ea; --fg:#172220; --muted:#5f7d80; --accent:#4f7682; --line:#e2ddd2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--fg);
+    font-family:"Yuanti SC","Hiragino Sans GB","PingFang SC",-apple-system,"Helvetica Neue",sans-serif;
+    font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+
+  .mark{position:fixed;top:24px;left:5vw;z-index:60;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;font-weight:400;mix-blend-mode:difference;color:#fff}
+  .topnav{position:fixed;top:24px;right:5vw;z-index:60;display:flex;gap:1.8rem;
+    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;mix-blend-mode:difference;color:#fff}
+  .topnav a:hover{opacity:.7}
+
+  /* hero video */
+  .hero{position:relative;height:86vh;width:100%;overflow:hidden;background:#0a0b0e}
+  .hero video{width:100%;height:100%;object-fit:cover;display:block}
+  .hero .cap{position:absolute;left:5vw;bottom:7vh;z-index:3;color:#fff;text-shadow:0 1px 20px rgba(0,0,0,.5)}
+  .hero .cap .k{letter-spacing:.22em;text-transform:uppercase;font-size:.74rem;opacity:.85;margin-bottom:1rem}
+  .hero .cap h1{font-size:clamp(2.6rem,8vw,6rem);font-weight:300;letter-spacing:.04em;line-height:1}
+
+  /* body */
+  .wrap{max-width:880px;margin:0 auto;padding:12vh 5vw}
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;padding-bottom:5vh;border-bottom:1px solid var(--line)}
+  @media(max-width:600px){.meta{grid-template-columns:1fr;gap:1.2rem}}
+  .meta .k{color:var(--muted);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem}
+  .meta .v{font-size:1rem}
+  .desc{padding-top:6vh;max-width:62ch}
+  .desc p{color:#3a4744;font-size:1.08rem;line-height:1.95;margin-bottom:1.6rem}
+  .desc p:first-child{font-size:1.3rem;color:var(--fg);line-height:1.7}
+
+  .still{margin-top:8vh}
+  .still img{width:100%;display:block;border-radius:4px}
+  .still figcaption{color:var(--muted);font-size:.82rem;margin-top:.9rem;letter-spacing:.02em}
+
+  .pager{display:flex;justify-content:space-between;align-items:center;
+    padding:10vh 5vw;border-top:1px solid var(--line);margin-top:8vh}
+  .pager a{font-size:.9rem;letter-spacing:.06em}
+  .pager a:hover{color:var(--accent)}
+  .pager .back{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:.2rem}
+</style>
+</head>
+<body>
+
+<div class="mark"><a href="index.html">SIBO LEE</a></div>
+<nav class="topnav">
+  <a href="index.html">代表作</a>
+  <a href="works.html">Works</a>
+  <a href="index.html#contact">Contact</a>
+</nav>
+
+<header class="hero">
+  <video autoplay muted loop playsinline poster="media/2036-poster.jpg">
+    <source src="media/2036.mp4" type="video/mp4">
+  </video>
+  <div class="cap">
+    <div class="k">AI 相关作品 · AIGC 动画</div>
+    <h1>2036</h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="meta">
+    <div><div class="k">类别 Category</div><div class="v">AI 相关作品 / AIGC</div></div>
+    <div><div class="k">媒介 Medium</div><div class="v">AIGC 动画 · 4K</div></div>
+    <div><div class="k">年份 Year</div><div class="v">2026</div></div>
+  </div>
+
+  <div class="desc">
+    <p>《2036》是一支以生成式人工智能创作的动画作品，想象十年之后的日常城市图景。</p>
+    <p>影片设定在 2036 年的海河两岸：通勤无人机沿水面低空穿行，新的交通秩序与旧的城市肌理叠合在一起。作品并不渲染技术的奇观，而是把视线放回到普通人的生活节奏——在飞行器与高楼之间，人如何继续过着平静、具体而温热的日子。</p>
+    <p>它是一次关于"低空经济"如何介入生活的视觉假设，也是对技术乐观主义的一种克制的注视：未来不是断裂，而是日常的缓慢生长。</p>
+  </div>
+
+  <figure class="still">
+    <img src="media/2036-poster.jpg" alt="2036 影片画面">
+    <figcaption>影片画面 · 海河上空的通勤无人机</figcaption>
+  </figure>
+</div>
+
+<nav class="pager">
+  <a class="back" href="index.html">← 返回代表作</a>
+  <a href="works.html">完整作品目录 →</a>
+</nav>
+
+</body>
+</html>

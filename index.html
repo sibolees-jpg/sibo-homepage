@@ -45,6 +45,8 @@
   .menu .name{font-size:clamp(1.6rem,3.4vw,2.8rem);font-weight:300;letter-spacing:.06em;line-height:1.15}
   .menu .en{display:block;margin-top:.35rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
     color:var(--muted);opacity:0;transition:opacity .4s}
+  .menu a.item[href]{cursor:pointer}
+  .menu a.item:not([href]){cursor:default}
   .menu:hover .item{opacity:.3}
   .menu .item:hover{opacity:1;letter-spacing:.12em}
   .menu .item:hover .en{opacity:1}
@@ -96,7 +98,7 @@
   <div class="scrim"></div>
 
   <nav class="menu" id="menu">
-    <a class="item" data-key="w1"><span class="name">2036</span><span class="en">AI Works · AIGC</span></a>
+    <a class="item" href="work-2036.html" data-key="w1"><span class="name">2036</span><span class="en">AI Works · AIGC</span></a>
     <a class="item" data-key="w2"><span class="name">待定</span><span class="en">TBD</span></a>
     <a class="item" data-key="w3"><span class="name">待定</span><span class="en">TBD</span></a>
     <a class="item" data-key="w4"><span class="name">待定</span><span class="en">TBD</span></a>
