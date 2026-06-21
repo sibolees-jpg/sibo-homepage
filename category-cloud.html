@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4D 点云与高斯 — Sibo Lee</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+<style>
+  :root{
+    --bg:#f4f2ea; --fg:#172220; --muted:#5f7d80; --accent:#4f7682; --line:#e2ddd2; --card:#fbfaf5;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg);color:var(--fg);
+    font-family:"Yuanti SC","Hiragino Sans GB","PingFang SC",-apple-system,"Helvetica Neue",sans-serif;
+    font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+
+  .mark{position:fixed;top:24px;left:5vw;z-index:60;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;font-weight:400}
+  .topnav{position:fixed;top:24px;right:5vw;z-index:60;display:flex;gap:1.8rem;
+    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+  .topnav a{opacity:.75}.topnav a:hover{opacity:1}
+
+  .head{padding:18vh 5vw 6vh}
+  .head .crumb{color:var(--muted);font-size:.78rem;letter-spacing:.1em;margin-bottom:1.2rem}
+  .head .crumb a{border-bottom:1px solid var(--line)}
+  .head .crumb a:hover{color:var(--accent)}
+  .head h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;letter-spacing:.04em}
+  .head .en{display:block;margin-top:.5rem;color:var(--muted);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase}
+
+  .grid{padding:4vh 5vw 16vh;display:grid;grid-template-columns:repeat(3,1fr);gap:2vw}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+
+  .work{display:block}
+  .work .thumb{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#e3ebe6}
+  .work .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .work:hover .thumb img{transform:scale(1.05)}
+  .work .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 45%,#e3ebe6,#dfe3da 75%);color:var(--muted);font-size:1.2rem}
+  .work .info{padding:1.1rem .2rem}
+  .work h2{font-size:1.25rem;font-weight:300;letter-spacing:.03em}
+  .work .meta{margin-top:.4rem;color:var(--muted);font-size:.82rem;letter-spacing:.05em}
+  .work.tbd{pointer-events:none}
+
+  footer{padding:8vh 5vw;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;line-height:1.9}
+  footer a{color:var(--fg);border-bottom:1px solid var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="mark"><a href="index.html">SIBO LEE</a></div>
+<nav class="topnav">
+  <a href="index.html">代表作</a>
+  <a href="works.html">Works</a>
+  <a href="index.html#contact">Contact</a>
+</nav>
+
+<header class="head">
+  <div class="crumb"><a href="works.html">完整作品目录</a> &nbsp;/&nbsp; 4D 点云与高斯</div>
+  <h1>4D 点云与高斯<span class="en">4D Point Cloud and Gaussian</span></h1>
+</header>
+
+<main class="grid">
+
+  <div class="work tbd">
+    <div class="thumb"><div class="ph">待定</div></div>
+    <div class="info"><h2>待定</h2><div class="meta">TBD</div></div>
+  </div>
+
+  <div class="work tbd">
+    <div class="thumb"><div class="ph">待定</div></div>
+    <div class="info"><h2>待定</h2><div class="meta">TBD</div></div>
+  </div>
+
+  <div class="work tbd">
+    <div class="thumb"><div class="ph">待定</div></div>
+    <div class="info"><h2>待定</h2><div class="meta">TBD</div></div>
+  </div>
+
+</main>
+
+<footer>
+  返回 <a href="works.html">完整作品目录 →</a><br>
+  © 2026 Sibo Lee — 天津美术学院
+</footer>
+
+</body>
+</html>
