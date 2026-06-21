@@ -13,67 +13,31 @@
   body{
     background:var(--bg);color:var(--fg);
     font-family:"Yuanti SC","Hiragino Sans GB","PingFang SC",-apple-system,"Helvetica Neue",sans-serif;
-    font-weight:300;
-    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
   a{color:inherit;text-decoration:none}
 
-  /* ---------- TOP MARK ---------- */
   .mark{position:fixed;top:24px;left:5vw;z-index:60;font-size:.8rem;letter-spacing:.2em;
     text-transform:uppercase;mix-blend-mode:difference;font-weight:400}
   .topnav{position:fixed;top:24px;right:5vw;z-index:60;display:flex;gap:1.8rem;
     font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;mix-blend-mode:difference}
   .topnav a{opacity:.8}.topnav a:hover{opacity:1}
 
-  /* ---------- STAGE (hover-reveal menu) ---------- */
-  .stage{position:relative;height:100vh;width:100%;overflow:hidden;background:#0a0b0e}
-  .layers{position:absolute;inset:0;z-index:1}
-  .layer{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;will-change:opacity}
-  .layer.active{opacity:1}
-  .layer video,.layer img{width:100%;height:100%;object-fit:cover;display:block}
-  .layer .ph{position:absolute;inset:0}
-  .layer .dots{position:absolute;inset:0;opacity:.4;
-    background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.4px);
-    background-size:15px 15px;mix-blend-mode:screen}
-  .g-paint{background:radial-gradient(circle at 35% 40%,#7a5a4a,#140d0a 72%)}
-  .g-ai{background:radial-gradient(circle at 65% 55%,#3a4d6b,#0a0e16 72%)}
-  .g-edu{background:radial-gradient(circle at 50% 65%,#3a5e52,#08110e 72%)}
-  .g-cloud{background:radial-gradient(ellipse at 55% 35%,#4a3a5e,#0c0a12 72%)}
-  .g-other{background:radial-gradient(circle at 45% 50%,#5a5648,#100f0b 72%)}
-
+  /* ---------- HERO: featured work ---------- */
+  .hero{position:relative;height:100vh;width:100%;overflow:hidden;background:#0a0b0e}
+  .hero video,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .scrim{position:absolute;inset:0;z-index:2;
-    background:linear-gradient(to right,rgba(7,7,8,.82),rgba(7,7,8,.25) 60%,rgba(7,7,8,.5))}
-
-  /* menu list */
-  .menu{position:absolute;z-index:3;left:5vw;top:50%;transform:translateY(-50%);max-width:90vw}
-  .menu .kicker{color:var(--accent);letter-spacing:.25em;text-transform:uppercase;
-    font-size:.74rem;margin-bottom:1.8rem;opacity:.9}
-  .menu ul{list-style:none}
-  .menu li{margin:.1rem 0}
-  .menu .item{display:flex;align-items:baseline;gap:1rem;padding:.35rem 0;
-    transition:opacity .35s ease, transform .45s cubic-bezier(.2,.7,.2,1)}
-  .menu .name{font-size:clamp(1.5rem,3.2vw,2.6rem);font-weight:300;letter-spacing:.02em;line-height:1.15}
-  .menu .en{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
-    opacity:0;transform:translateX(-6px);transition:.4s}
-  .menu .tagline{margin-top:1.6rem;font-size:clamp(.9rem,1.5vw,1.05rem);font-weight:300;color:#e6e2d9;
-    max-width:36ch;min-height:1.6em;opacity:.0;transition:opacity .4s;
-    text-shadow:0 1px 18px rgba(0,0,0,.6)}
-  .menu .tagline.show{opacity:1}
-  /* hover dimming */
-  .menu ul:hover .item{opacity:.32}
-  .menu ul .item:hover{opacity:1;transform:translateX(14px)}
-  .menu .item:hover .en{opacity:1;transform:none}
-
-  .hint{position:absolute;z-index:3;bottom:6vh;left:5vw;color:var(--muted);
-    font-size:.78rem;letter-spacing:.1em}
-
-  @media(max-width:760px){
-    .scrim{background:linear-gradient(to top,rgba(7,7,8,.9),rgba(7,7,8,.4))}
-    .menu{top:auto;bottom:12vh;transform:none}
-    .menu ul:hover .item{opacity:1}
-    .menu .en{opacity:1;transform:none}
-    .hint{display:none}
-  }
+    background:linear-gradient(to top,rgba(7,7,8,.9),rgba(7,7,8,.1) 45%,rgba(7,7,8,.45))}
+  .feat{position:absolute;left:5vw;bottom:10vh;z-index:3;max-width:90vw}
+  .feat .kicker{color:var(--accent);letter-spacing:.25em;text-transform:uppercase;font-size:.74rem;margin-bottom:1.4rem}
+  .feat h1{font-size:clamp(2.4rem,7vw,5rem);font-weight:300;letter-spacing:.04em;line-height:1}
+  .feat .meta{margin-top:.9rem;font-size:.82rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  .feat .tag{margin-top:1.5rem;font-size:clamp(.95rem,1.8vw,1.15rem);color:#e6e2d9;max-width:38ch;
+    line-height:1.6;text-shadow:0 1px 18px rgba(0,0,0,.6)}
+  .feat .more{display:inline-block;margin-top:2.4rem;font-size:.82rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--fg);border-bottom:1px solid var(--accent);padding-bottom:.25rem;
+    transition:.25s}
+  .feat .more:hover{color:var(--accent);padding-left:.3rem}
 
   /* ---------- SECTIONS ---------- */
   section{padding:16vh 5vw}
@@ -81,48 +45,37 @@
   .about{max-width:760px}
   .about .big{font-size:clamp(1.2rem,2.4vw,1.7rem);font-weight:300;line-height:1.55;letter-spacing:.01em}
   .about .big em{color:var(--accent);font-style:normal}
-  .about .body{margin-top:2.5rem;color:#bcb8b0;font-size:1.05rem;line-height:1.8;max-width:60ch}
+  .about .body{margin-top:2.5rem;color:#bcb8b0;font-size:1.02rem;line-height:1.85;max-width:60ch;font-weight:300}
   .contact{border-top:1px solid var(--line)}
   .contact h2{font-size:clamp(1.6rem,4vw,2.6rem);font-weight:300;letter-spacing:.02em}
-  .contact a.mail{display:inline-block;margin-top:1.5rem;font-size:clamp(1.1rem,2.5vw,1.6rem);
+  .contact a.mail{display:inline-block;margin-top:1.5rem;font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:300;
     color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:.2rem}
   .contact .meta{margin-top:4rem;color:var(--muted);font-size:.85rem;line-height:1.9}
+
+  @media(max-width:760px){.scrim{background:linear-gradient(to top,rgba(7,7,8,.92),rgba(7,7,8,.35))}}
 </style>
 </head>
 <body>
 
 <div class="mark"><a href="#top">SIBO LEE</a></div>
 <nav class="topnav">
+  <a href="works.html">Works</a>
   <a href="#about">About</a>
   <a href="#contact">Contact</a>
 </nav>
 
-<header class="stage" id="top">
-  <div class="layers">
-    <div class="layer" data-cat="paint"><div class="ph g-paint"><div class="dots"></div></div></div>
-    <div class="layer" data-cat="ai">
-      <video muted loop playsinline poster="media/2036-poster.jpg" preload="auto">
-        <source src="media/2036.mp4" type="video/mp4"></video>
-    </div>
-    <div class="layer" data-cat="edu"><div class="ph g-edu"><div class="dots"></div></div></div>
-    <div class="layer" data-cat="cloud"><div class="ph g-cloud"><div class="dots"></div></div></div>
-    <div class="layer" data-cat="other"><div class="ph g-other"><div class="dots"></div></div></div>
-  </div>
+<header class="hero" id="top">
+  <video autoplay muted loop playsinline poster="media/2036-poster.jpg">
+    <source src="media/2036.mp4" type="video/mp4">
+  </video>
   <div class="scrim"></div>
-
-  <div class="menu">
-    <div class="kicker">Selected Works</div>
-    <ul id="menu">
-      <li><a class="item" data-cat="paint"  data-tag="布面与纸本的持续实践。"><span class="name">绘画</span><span class="en">Painting</span></a></li>
-      <li><a class="item" data-cat="ai"     data-tag="《2036》——以 AIGC 想象未来日常的动画作品。"><span class="name">AI 相关作品</span><span class="en">AI Works</span></a></li>
-      <li><a class="item" data-cat="edu"    data-tag="以美育介入社会现场的项目实践。"><span class="name">社会美育项目</span><span class="en">Social Aesthetic Education</span></a></li>
-      <li><a class="item" data-cat="cloud"  data-tag="将非遗与表演记录为动态行为数据集。"><span class="name">4D 点云与高斯</span><span class="en">4D Point Cloud &amp; Gaussian</span></a></li>
-      <li><a class="item" data-cat="other"  data-tag="跨媒介的其他实验与协作。"><span class="name">其他</span><span class="en">Other</span></a></li>
-    </ul>
-    <p class="tagline" id="tagline"></p>
+  <div class="feat">
+    <div class="kicker">代表作 · Selected</div>
+    <h1>2036</h1>
+    <div class="meta">AI 相关作品 · AIGC 动画</div>
+    <p class="tag">以 AIGC 想象未来日常的一支动画作品——在技术与生活的交界处，描摹一种温度。</p>
+    <a class="more" href="works.html">完整作品目录 →</a>
   </div>
-
-  <div class="hint">悬停查看 · Hover to explore</div>
 </header>
 
 <section id="about" class="about">
@@ -140,34 +93,5 @@
   </div>
 </section>
 
-<script>
-const layers={};
-document.querySelectorAll('.layer').forEach(l=>layers[l.dataset.cat]=l);
-const items=document.querySelectorAll('#menu .item');
-const tagEl=document.getElementById('tagline');
-let current=null;
-
-function activate(cat,tag){
-  if(current && layers[current]) layers[current].classList.remove('active');
-  if(layers[cat]){
-    layers[cat].classList.add('active');
-    const v=layers[cat].querySelector('video');
-    if(v){v.play().catch(()=>{});}
-    current=cat;
-  }
-  tagEl.textContent=tag||'';
-  tagEl.classList.toggle('show',!!tag);
-}
-
-items.forEach(it=>{
-  it.addEventListener('mouseenter',()=>activate(it.dataset.cat,it.dataset.tag));
-});
-// 默认展示 AI / 2036
-const def=document.querySelector('#menu .item[data-cat="ai"]');
-window.addEventListener('load',()=>activate('ai',def.dataset.tag));
-
-// 移动端：直接显示视频背景
-if(matchMedia('(max-width:760px)').matches){activate('ai','');tagEl.classList.remove('show');}
-</script>
 </body>
 </html>
