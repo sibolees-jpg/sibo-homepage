@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>虚幻系列 — Sibo Lee</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+<style>
+  :root{
+    --bg:#f4f2ea; --fg:#172220; --muted:#5f7d80; --accent:#4f7682; --line:#e2ddd2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--fg);
+    font-family:"Yuanti SC","Hiragino Sans GB","PingFang SC",-apple-system,"Helvetica Neue",sans-serif;
+    font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+
+  .mark{position:fixed;top:24px;left:5vw;z-index:60;font-size:.8rem;letter-spacing:.2em;
+    text-transform:uppercase;font-weight:400;mix-blend-mode:difference;color:#fff}
+  .topnav{position:fixed;top:24px;right:5vw;z-index:60;display:flex;gap:1.8rem;
+    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;mix-blend-mode:difference;color:#fff}
+  .topnav a:hover{opacity:.7}
+
+  .hero{position:relative;height:86vh;width:100%;overflow:hidden;background:#0a0b0e}
+  .hero video{width:100%;height:100%;object-fit:cover;display:block}
+  .hero .cap{position:absolute;left:5vw;bottom:7vh;z-index:3;color:#fff;text-shadow:0 1px 20px rgba(0,0,0,.5)}
+  .hero .cap .k{letter-spacing:.22em;text-transform:uppercase;font-size:.74rem;opacity:.85;margin-bottom:1rem}
+  .hero .cap h1{font-size:clamp(2.6rem,8vw,6rem);font-weight:300;letter-spacing:.04em;line-height:1}
+
+  .wrap{max-width:880px;margin:0 auto;padding:12vh 5vw 6vh}
+  .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;padding-bottom:5vh;border-bottom:1px solid var(--line)}
+  @media(max-width:600px){.meta{grid-template-columns:1fr;gap:1.2rem}}
+  .meta .k{color:var(--muted);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.5rem}
+  .meta .v{font-size:1rem}
+  .desc{padding-top:6vh;max-width:62ch}
+  .desc p{color:#3a4744;font-size:1.08rem;line-height:1.95;margin-bottom:1.6rem}
+  .desc p:first-child{font-size:1.3rem;color:var(--fg);line-height:1.7}
+
+  /* gallery */
+  .gallery{padding:4vh 5vw 6vh;columns:2;column-gap:2vw}
+  @media(max-width:700px){.gallery{columns:1}}
+  .gallery img{width:100%;margin-bottom:2vw;border-radius:4px;display:block;
+    cursor:zoom-in;transition:opacity .3s}
+  .gallery img:hover{opacity:.9}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:100;background:rgba(10,12,12,.92);display:none;
+    align-items:center;justify-content:center;cursor:zoom-out;padding:4vw}
+  .lb.open{display:flex}
+  .lb img{max-width:94vw;max-height:92vh;border-radius:4px}
+
+  .pager{display:flex;justify-content:space-between;align-items:center;
+    padding:8vh 5vw;border-top:1px solid var(--line)}
+  .pager a{font-size:.9rem;letter-spacing:.06em}
+  .pager a:hover{color:var(--accent)}
+  .pager .back{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:.2rem}
+</style>
+</head>
+<body>
+
+<div class="mark"><a href="index.html">SIBO LEE</a></div>
+<nav class="topnav">
+  <a href="category-painting.html">绘画</a>
+  <a href="works.html">Works</a>
+  <a href="index.html#contact">Contact</a>
+</nav>
+
+<header class="hero">
+  <video autoplay muted loop playsinline poster="media/illusory-poster.jpg">
+    <source src="media/illusory.mp4" type="video/mp4">
+  </video>
+  <div class="cap">
+    <div class="k">绘画 · Phantasm Series</div>
+    <h1>虚幻系列</h1>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="meta">
+    <div><div class="k">类别 Category</div><div class="v">绘画 / Painting</div></div>
+    <div><div class="k">媒介 Medium</div><div class="v">系列绘画</div></div>
+    <div><div class="k">数量 Works</div><div class="v">13 幅</div></div>
+  </div>
+
+  <div class="desc">
+    <p>《虚幻系列》是一组关于"看见与不可见"的绘画。</p>
+    <p>画面里反复出现人群、旷野、海与岛、漂浮的鱼与树——它们既像真实的风景，又像某种被记忆篡改过的梦境。系列试图在写实与幻象的临界处停留：当熟悉的事物被轻轻挪移，日常便显露出它隐藏的、虚幻的一面。</p>
+  </div>
+</div>
+
+<div class="gallery" id="gallery">
+  <img src="media/paintings/p01.jpg" alt="虚幻系列 01">
+  <img src="media/paintings/p02.jpg" alt="虚幻系列 02">
+  <img src="media/paintings/p03.jpg" alt="虚幻系列 03">
+  <img src="media/paintings/p04.jpg" alt="虚幻系列 04">
+  <img src="media/paintings/p05.jpg" alt="虚幻系列 05">
+  <img src="media/paintings/p06.jpg" alt="虚幻系列 06">
+  <img src="media/paintings/p07.jpg" alt="虚幻系列 07">
+  <img src="media/paintings/p08.jpg" alt="虚幻系列 08">
+  <img src="media/paintings/p09.jpg" alt="虚幻系列 09">
+  <img src="media/paintings/p10.jpg" alt="虚幻系列 10">
+  <img src="media/paintings/p11.jpg" alt="虚幻系列 11">
+  <img src="media/paintings/p12.jpg" alt="虚幻系列 12">
+  <img src="media/paintings/p13.jpg" alt="虚幻系列 13">
+</div>
+
+<nav class="pager">
+  <a class="back" href="category-painting.html">← 返回绘画</a>
+  <a href="works.html">完整作品目录 →</a>
+</nav>
+
+<div class="lb" id="lb"><img src="" alt=""></div>
+
+<script>
+const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+document.querySelectorAll('#gallery img').forEach(img=>{
+  img.addEventListener('click',()=>{lbImg.src=img.src;lb.classList.add('open');});
+});
+lb.addEventListener('click',()=>lb.classList.remove('open'));
+</script>
+</body>
+</html>
