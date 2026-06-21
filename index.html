@@ -7,7 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
   :root{
-    --bg:#070708; --fg:#f4f2ee; --muted:#8a877f; --accent:#d8c8a0; --line:#1c1c20;
+    --bg:#0a1213; --fg:#ece9df; --muted:#6e8b8e; --accent:#95c1cc; --line:#192324;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -25,17 +25,17 @@
   .topnav a{opacity:.8}.topnav a:hover{opacity:1}
 
   /* ---------- STAGE: hover reveals full-screen video ---------- */
-  .stage{position:relative;height:100vh;width:100%;overflow:hidden;background:#0a0b0e}
+  .stage{position:relative;height:100vh;width:100%;overflow:hidden;background:#0a1213}
   .layers{position:absolute;inset:0;z-index:1}
   .layer{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;will-change:opacity}
   .layer.active{opacity:1}
   .layer video,.layer img{width:100%;height:100%;object-fit:cover;display:block}
-  .layer .ph{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#23252d,#0a0b0e 75%)}
+  .layer .ph{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,#243a3c,#0a1213 75%)}
   .layer .ph .dots{position:absolute;inset:0;opacity:.32;
     background-image:radial-gradient(rgba(255,255,255,.4) 1px,transparent 1.4px);
     background-size:16px 16px;mix-blend-mode:screen}
 
-  .scrim{position:absolute;inset:0;z-index:2;background:rgba(7,7,8,.42);transition:background .6s}
+  .scrim{position:absolute;inset:0;z-index:2;background:rgba(10,18,19,.42);transition:background .6s}
 
   /* centered vertical list of work names */
   .menu{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;
@@ -134,7 +134,7 @@ function activate(key){
     current=key;
   }
   // 悬停时背景更暗一点突出影像
-  scrim.style.background='rgba(7,7,8,.32)';
+  scrim.style.background='rgba(10,18,19,.34)';
 }
 document.querySelectorAll('#menu .item').forEach(it=>{
   it.addEventListener('mouseenter',()=>activate(it.dataset.key));
