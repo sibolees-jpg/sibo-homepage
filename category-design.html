@@ -35,9 +35,11 @@
   @media(max-width:560px){.grid{grid-template-columns:1fr}}
 
   .work{display:block}
-  .work .thumb{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#e3ebe6}
-  .work .thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
-  .work:hover .thumb img{transform:scale(1.05)}
+  .work .thumb{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#fff;
+    display:flex;align-items:center;justify-content:center}
+  .work .thumb img{max-width:88%;max-height:86%;width:auto;height:auto;object-fit:contain;display:block;
+    transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .work:hover .thumb img{transform:scale(1.04)}
   .work .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
     background:radial-gradient(circle at 50% 45%,#e3ebe6,#dfe3da 75%);color:var(--muted);font-size:1.2rem}
   .work .info{padding:1.1rem .2rem}
@@ -74,7 +76,7 @@
   </a>
 
   <a class="work" href="work-meng.html">
-    <div class="thumb"><img src="media/design/meng/m03_poster.jpg" alt="梦津津"></div>
+    <div class="thumb"><img src="media/design/meng/m01_ip.jpg" alt="梦津津"></div>
     <div class="info">
       <h2>梦津津 · 无人机大赛 IP</h2>
       <div class="meta">天津低空经济公司 · 全国青少年无人机大赛</div>
